@@ -57,10 +57,8 @@ function similarity(userId, myReviews, userReviews) {
 
     var multiSum = 0;
     for (var i =0; i < tempMyReviews.length; i++) {
-        for (var j = 0; j < tempUserReviews.length; j++) {
-            if (tempMyReviews[i]['business_id'] === tempUserReviews[j]['business_id']) {
-                multiSum += tempMyReviews[i]['review_star'] * tempUserReviews[j]['review_star'];
-            }
+        if (tempMyReviews[i]['business_id'] === tempUserReviews[i]['business_id']) {
+            multiSum += tempMyReviews[i]['review_star'] * tempUserReviews[i]['review_star'];
         }
     }
 
