@@ -84,20 +84,16 @@ function sortProperties(obj)
 }
 
 var data = d3.json("./data/reviews.json", function(error, data) {
-    //list users based on sim
-    var sim_result = [];
-    for(var key in data) {
-        if (key != my_id) {
-            sim_result.push(similarity(key, data[my_id]['reviews'], data[key]['reviews']));
-        }
-    }
-    sortedUser = sortProperties(sim_result);
+    sortedUser = sortProperties(data);
     console.log(sortedUser);
     for(var key in sortedUser) {
-        add_div(sortedUser[key][1].userId, data[sortedUser[key][1].userId]);
+        console.log(sortedUser[key][0]);
+        if (key == 0) //my data
+            continue;
+        add_div(sortedUser[key][0], data[sortedUser[key][0]]);
     }
 
-    user_id = sortedUser[0][1].userId;
+    user_id = sortedUser[1][0];
     my_data = data[my_id];
     user_data = data[user_id];
     updateUI(my_data, user_data);
