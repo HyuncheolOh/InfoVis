@@ -38,6 +38,10 @@ function updateUI(my_data, user_data) {
                 b["business"] = my_reviews[i]['name'];
                 b[my_name] = my_reviews[i]['review_star'];
                 b[user_name] = user_reviews[j]['review_star'];
+                b["id"] = my_reviews[i]['business_id'];
+                b["latitude"] = my_reviews[i]['latitude'];
+                b["longitude"] = my_reviews[i]['longitude'];
+                b["star"] = my_reviews[i]['star'];
                 if (n_user_reviews.length > 30) {
                     break;
                 }
@@ -85,9 +89,7 @@ function sortProperties(obj)
 
 var data = d3.json("./data/reviews.json", function(error, data) {
     sortedUser = sortProperties(data);
-    console.log(sortedUser);
     for(var key in sortedUser) {
-        console.log(sortedUser[key][0]);
         if (key == 0) //my data
             continue;
         add_div(sortedUser[key][0], data[sortedUser[key][0]]);

@@ -4,6 +4,7 @@ function GroupBar() {
     var margin = {top: 20, right: 70, bottom: 30, left: 40};
     function my(selection){
         selection.each(function(data){
+            console.log(data);
             var svg = d3.select("#bar").append("svg").attr("id", "svg_bar").attr("width", width).attr("height", height),
                 g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -29,6 +30,13 @@ function GroupBar() {
             x1.domain(keys).rangeRound([0, x0.bandwidth()]);
             y.domain([0, 5]).nice();
 
+            var tool_tip = d3.tip()
+                .attr("class", "d3-tip")
+                .offset([-8, 0])
+                .html(function(d) {
+                    return  "Name : " + d.name +"</br>Star : " + d.star;
+                     });
+            svg.call(tool_tip);
 
             g.append("g")
                 .selectAll("g")
@@ -37,7 +45,7 @@ function GroupBar() {
                 .attr("transform", function(d) { return "translate(" + x0(d.business) + ",0)"; })
                 .selectAll("rect")
                 .data(function(d) { return keys.map(function(key) {
-                    return {key: key, value: d[key]}; });
+                    return {key: key, value: d[key], "latitude":d.latitude, "longitude":d.longitude, "star":d.star, "name":d.business}; });
                 })
                 .enter().append("rect")
                 .attr("x", function(d) { return x1(d.key); })
@@ -45,6 +53,8 @@ function GroupBar() {
                 .attr("width", x1.bandwidth())
                 .attr("height", function(d) { return height - y(d.value); })
                 .attr("fill", function(d) { return z(d.key); })
+                .on('mouseover', tool_tip.show)
+                .on('mouseout', tool_tip.hide)
                 .on("click", function(d) {
                    onCkick(d);
                 });
@@ -89,8 +99,18 @@ function GroupBar() {
                 .text(function(d) { return d; });
 
             function onCkick(d) {
-                console.log("onClick " + d.key );
-                console.log("onClick " + d.value );
+                console.log("onClick " + d.key);
+                console.log("onClick " + d.value);
+                console.log("onClick " + d.latitude);
+                console.log("onClick " + d.longitude);
+                console.log("onClick " + d.star);
+                console.log("onClick " + d.name);
+
+                var tool_tip = d3.tip()
+                    .attr("class", "d3-tip")
+                    .offset([-8, 0])
+                    .html(function(d) { return "TEST TIP"; });
+                g.call(tool_tip);
 
             }
         });
