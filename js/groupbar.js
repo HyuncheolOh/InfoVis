@@ -1,14 +1,15 @@
 function GroupBar() {
     var width, height;
-    var user_name, c_user_name;
-    var margin = {top: 20, right: 20, bottom: 30, left: 40};
+    var my_name, user_name;
+    var margin = {top: 20, right: 70, bottom: 30, left: 40};
     function my(selection){
         selection.each(function(data){
+            var svg = d3.select("#bar").append("svg").attr("id", "svg_bar").attr("width", width).attr("height", height),
+                g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
             width = width - margin.left - margin.right;
             height = height - margin.top - margin.bottom;
 
-            var svg = d3.select("#bar").append("svg").attr("width", width).attr("height", height),
-                g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
             var x0 = d3.scaleBand()
                 .rangeRound([0, width])
                 .paddingInner(0.1);
@@ -22,7 +23,7 @@ function GroupBar() {
             var z = d3.scaleOrdinal()
                 .range(["#98abc5", "#ff8c00"]);
 
-            columns =  ["business", user_name, c_user_name];
+            columns =  ["business", my_name, user_name];
             var keys = columns.slice(1);
             x0.domain(data.map(function(d) { return d.business; }));
             x1.domain(keys).rangeRound([0, x0.bandwidth()]);
@@ -35,18 +36,24 @@ function GroupBar() {
                 .enter().append("g")
                 .attr("transform", function(d) { return "translate(" + x0(d.business) + ",0)"; })
                 .selectAll("rect")
-                .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
+                .data(function(d) { return keys.map(function(key) {
+                    return {key: key, value: d[key]}; });
+                })
                 .enter().append("rect")
                 .attr("x", function(d) { return x1(d.key); })
                 .attr("y", function(d) { return y(d.value); })
                 .attr("width", x1.bandwidth())
                 .attr("height", function(d) { return height - y(d.value); })
-                .attr("fill", function(d) { return z(d.key); });
+                .attr("fill", function(d) { return z(d.key); })
+                .on("click", function(d) {
+                   onCkick(d);
+                });
 
+            var xAxis = d3.axisBottom(x0).tickFormat("");
             g.append("g")
                 .attr("class", "axis")
                 .attr("transform", "translate(0," + height + ")")
-                .call(d3.axisBottom(x0));
+                .call(xAxis);
 
             g.append("g")
                 .attr("class", "axis")
@@ -58,7 +65,7 @@ function GroupBar() {
                 .attr("fill", "#000")
                 .attr("font-weight", "bold")
                 .attr("text-anchor", "start")
-                .text("Population");
+                .text("Star");
 
             var legend = g.append("g")
                 .attr("font-family", "sans-serif")
@@ -70,17 +77,22 @@ function GroupBar() {
                 .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
             legend.append("rect")
-                .attr("x", width - 19)
+                .attr("x", width + 29)
                 .attr("width", 19)
                 .attr("height", 19)
                 .attr("fill", z);
 
             legend.append("text")
-                .attr("x", width - 24)
+                .attr("x", width + 24)
                 .attr("y", 9.5)
                 .attr("dy", "0.32em")
                 .text(function(d) { return d; });
 
+            function onCkick(d) {
+                console.log("onClick " + d.key );
+                console.log("onClick " + d.value );
+
+            }
         });
     };
     my.width = function(value){
@@ -95,15 +107,15 @@ function GroupBar() {
         return my;
     }
 
-    my.user_name = function(value) {
+    my.my_name = function(value) {
         if(!arguments.length) return height;
-        user_name = value;
+        my_name = value;
         return my;
     }
 
-    my.c_user_name = function(value) {
+    my.user_name = function(value) {
         if(!arguments.length) return height;
-        c_user_name = value;
+        user_name = value;
         return my;
     }
 
@@ -115,5 +127,6 @@ function GroupBar() {
         margin.bottom = value['bottom'];
         return my;
     }
+
     return my;
 }

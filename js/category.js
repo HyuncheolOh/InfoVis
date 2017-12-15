@@ -9,6 +9,7 @@ function Category() {
                 .sort(function(a, b) { return b.value - a.value; });
 
             var svg = d3.select(this).append("svg")
+                    .attr("id", "svg_category")
                     .attr("width", width)
                     .attr("height", height),
                 margin = 20,
