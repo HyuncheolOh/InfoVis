@@ -57,7 +57,7 @@ var context = svg.append("g")
 var user_id = 'PKEzKWv_FktMm2mGPjwd0Q';
 var c_user_id = '4ZfcCa4m5RWvO4EFzfYm1A';
 
-var data = d3.request("../data/reviews.json")
+var data = d3.request("./data/reviews.json")
   .mimeType("application/json")
   .response(function(xhr) { return JSON.parse(xhr.responseText); })
   .get(function(data) {
