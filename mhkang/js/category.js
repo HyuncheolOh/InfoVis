@@ -17,8 +17,8 @@ function Category() {
                 g = svg.append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
             var color = d3.scaleLinear()
-                .domain([-1, 5])
-                .range(["hsl(152,30%,80%)", "hsl(228,30%,40%)"])
+                .domain([-1, 0, 1,2 ])
+                .range(["white",  "rgb(192,192,192)", "rgb(160,160,160)", "rgb(128,128,128)"])
                 .interpolate(d3.interpolateHcl);
 
             var pack = d3.pack()

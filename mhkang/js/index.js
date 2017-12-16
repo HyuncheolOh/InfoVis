@@ -68,7 +68,7 @@ function updateUI(my_data, user_data) {
         .my_name(my_name)
         .user_name(user_name)
         .width(800)
-        .height(400);
+        .height(350);
 
     bar_svg
         .datum(n_user_reviews)

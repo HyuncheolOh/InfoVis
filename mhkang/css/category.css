@@ -8,7 +8,7 @@
 }
 
 .node--leaf {
-    fill: white;
+    fill: rgb(248,248,248);
 }
 
 .label {

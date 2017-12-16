@@ -23,7 +23,7 @@ function GroupBar() {
                 .rangeRound([height, 0]);
 
             var z = d3.scaleOrdinal()
-                .range(["#98abc5", "#ff8c00"]);
+                .range(["#b6b6b4", "steelblue"]);
 
             columns =  ["business", my_name, user_name];
             var keys = columns.slice(1);
