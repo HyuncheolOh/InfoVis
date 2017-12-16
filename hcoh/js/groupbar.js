@@ -98,6 +98,8 @@ function GroupBar() {
                 .attr("dy", "0.32em")
                 .text(function(d) { return d; });
 
+            var mapData = {};
+            mapClear();
             function onCkick(d) {
                 console.log("onClick " + d.key);
                 console.log("onClick " + d.value);
@@ -105,13 +107,8 @@ function GroupBar() {
                 console.log("onClick " + d.longitude);
                 console.log("onClick " + d.star);
                 console.log("onClick " + d.name);
-
-                var tool_tip = d3.tip()
-                    .attr("class", "d3-tip")
-                    .offset([-8, 0])
-                    .html(function(d) { return "TEST TIP"; });
-                g.call(tool_tip);
-
+                mapData[d.name] = {lat:d.latitude, lng:d.longitude, name:d.name};
+                drawGoogleMaps(mapData);
             }
         });
     };

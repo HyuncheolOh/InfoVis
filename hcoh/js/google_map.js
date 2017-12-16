@@ -3,19 +3,8 @@ var offset = 0;
 var count = 10;
 var query = "offset="+ offset + "&count=" + count;
 
-// var data = d3.request(url)
-//     .mimeType("application/json")
-//     .response(function(xhr) { return JSON.parse(xhr.responseText); })
-//     .get(function(data) {
-//         if (data != null){
-//             for (var i = 0, item; item = data[i]; i++){
-//                 myLatLng.push({lat: item[0], lng: item[1]});
-//             }
-//         }
-//       myDataIsReady();
-//   });
-
 function drawGoogleMaps(data) {
+    console.log(data);
     if (data != null) {
         Object.keys(data).forEach(function (key) {
             var item = data[key];
