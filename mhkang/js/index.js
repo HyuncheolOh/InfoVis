@@ -112,6 +112,7 @@ function sortProperties(obj)
 }
 
 var data = d3.json("./data/reviews.json", function(error, data) {
+    console.log(data);
     sortedUser = sortProperties(data);
     var flag = true;
     for(var key in sortedUser) {

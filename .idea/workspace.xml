@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9e186329-d2c0-4cd2-af86-908fd1b1a7a3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mhkang/css/category.css" afterPath="$PROJECT_DIR$/mhkang/css/category.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mhkang/index.html" afterPath="$PROJECT_DIR$/mhkang/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mhkang/js/category.js" afterPath="$PROJECT_DIR$/mhkang/js/category.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mhkang/js/groupbar.js" afterPath="$PROJECT_DIR$/mhkang/js/groupbar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mhkang/js/index.js" afterPath="$PROJECT_DIR$/mhkang/js/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,21 +17,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mhkang/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="57" column="67" lean-forward="true" selection-start-line="57" selection-start-column="67" selection-end-line="57" selection-end-column="67" />
+            <state relative-caret-position="173">
+              <caret line="68" column="18" lean-forward="true" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="category.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mhkang/js/category.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="category.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mhkang/js/category.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mhkang/js/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="20" column="65" lean-forward="false" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
+            <state relative-caret-position="206">
+              <caret line="102" column="35" lean-forward="true" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -54,10 +63,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>user_data</find>
-      <find>c_user_data</find>
-      <find>append</find>
-      <find>width</find>
       <find>rect</find>
       <find>xa</find>
       <find>text</find>
@@ -84,6 +89,10 @@
       <find>d3-tip</find>
       <find>color</find>
       <find>white</find>
+      <find>time</find>
+      <find>sidebar</find>
+      <find>u_list</find>
+      <find>u_listu_list</find>
     </findStrings>
     <replaceStrings>
       <replace>scaleOrdinal()</replace>
@@ -129,10 +138,10 @@
         <option value="$PROJECT_DIR$/hcoh/js/groupbar.js" />
         <option value="$PROJECT_DIR$/hcoh/index.html" />
         <option value="$PROJECT_DIR$/mhkang/index.html" />
-        <option value="$PROJECT_DIR$/mhkang/js/index.js" />
         <option value="$PROJECT_DIR$/mhkang/js/groupbar.js" />
         <option value="$PROJECT_DIR$/mhkang/css/category.css" />
         <option value="$PROJECT_DIR$/mhkang/js/category.js" />
+        <option value="$PROJECT_DIR$/mhkang/js/index.js" />
       </list>
     </option>
   </component>
@@ -143,8 +152,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
+    <option name="x" value="-53" />
+    <option name="width" value="1932" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -163,14 +172,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="infovis" type="b2602c69:ProjectViewProjectNode" />
               <item name="infovis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="infovis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="infovis" type="462c0819:PsiDirectoryNode" />
+              <item name="hcoh" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="infovis" type="b2602c69:ProjectViewProjectNode" />
@@ -187,12 +199,14 @@
               <item name="infovis" type="b2602c69:ProjectViewProjectNode" />
               <item name="infovis" type="462c0819:PsiDirectoryNode" />
               <item name="mhkang" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -204,13 +218,14 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\workspace\infovis\data" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\workspace\infovis\data" />
       <recent name="D:\workspace\infovis\js" />
       <recent name="D:\workspace\infovis" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\workspace\infovis\mhkang\data" />
+      <recent name="D:\workspace\infovis\data" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -248,18 +263,18 @@
       <workItem from="1513074651442" duration="1886000" />
       <workItem from="1513077205397" duration="6509000" />
       <workItem from="1513090925542" duration="4525000" />
-      <workItem from="1513435352018" duration="2998000" />
+      <workItem from="1513435352018" duration="3133000" />
+      <workItem from="1513438632460" duration="360000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113537000" />
+    <option name="totallyTimeSpent" value="114032000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="-53" y="0" width="1932" height="1047" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8203125" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23643006" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32862523" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -291,8 +306,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/index.js" />
-    <entry file="file://$PROJECT_DIR$/js/category.js" />
     <entry file="file://$PROJECT_DIR$/js/histogram.js" />
     <entry file="file://$PROJECT_DIR$/index.html" />
     <entry file="file://$PROJECT_DIR$/js/index.js" />
@@ -368,20 +381,11 @@
     <entry file="file://$PROJECT_DIR$/css/d3-tip.css" />
     <entry file="file://$PROJECT_DIR$/js/groupbar.js" />
     <entry file="file://$PROJECT_DIR$/index.html" />
-    <entry file="file://$PROJECT_DIR$/mhkang/google_map.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="106" lean-forward="true" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="106" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mhkang/google_map.html" />
     <entry file="file://$PROJECT_DIR$/hcoh/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="23" column="38" lean-forward="true" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -389,7 +393,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="97" column="37" lean-forward="false" selection-start-line="97" selection-start-column="37" selection-end-line="97" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -397,18 +400,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="16" column="17" lean-forward="false" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mhkang/offcanvas.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mhkang/offcanvas.html" />
     <entry file="file://$PROJECT_DIR$/mhkang/js/groupbar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
@@ -417,35 +412,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mhkang/css/category.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mhkang/js/category.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mhkang/js/time_series.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mhkang/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+        <state relative-caret-position="206">
+          <caret line="102" column="35" lean-forward="true" selection-start-line="102" selection-start-column="35" selection-end-line="102" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mhkang/data/reviews.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mhkang/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="57" column="67" lean-forward="true" selection-start-line="57" selection-start-column="67" selection-end-line="57" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mhkang/css/category.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mhkang/js/category.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="20" column="65" lean-forward="false" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
-          <folding />
+        <state relative-caret-position="173">
+          <caret line="68" column="18" lean-forward="true" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
