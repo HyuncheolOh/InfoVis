@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Embedding Vega-Lite</title>
+  <!-- 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.8/vega.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-lite/2.0.3/vega-lite.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-rc7/vega-embed.js"></script>
+
+  <script src="js/vega.js"></script>
+  <script src="js/vega-light.js"></script>
+  <script src="js/vega-embed.js"></script>
+  -->
+  <script src="js/vega.js"></script>
+  <script src="js/vega-light.js"></script>
+  <script src="js/vega-embed.js"></script>
+</head>
+<body>
+
+  <div id="vis"></div>
+
+  <script type="text/javascript">
+    var yourVlSpec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "data": {"url": "data/sp.csv"},
+  "vconcat": [{
+    "width": 480,
+    "mark": "area",
+    "encoding": {
+      "x": {
+        "field": "x_val",
+        "type": "quantitative",
+        "scale": {"domain": {"selection": "brush"}},
+        "axis": {"title": ""}
+      },
+      "y": {"field": "y_val","type": "quantitative"}
+    }
+  }, {
+    "width": 480,
+    "height": 60,
+    "mark": "area",
+      "selection": {
+        "brush": {"type": "interval", "encodings": ["x"]}
+    },
+    "encoding": {
+      "x": {
+        "field": "x_val",
+        "type": "quantitative",
+        "axis": {"title": ""}
+      },
+      "y": {
+        "field": "y_val",
+        "type": "quantitative",
+        "axis": {"tickCount": 3, "grid": false}
+      }
+    }
+  }]
+}
+    vegaEmbed("#vis", yourVlSpec);
+  </script>
+</body>
+</html>

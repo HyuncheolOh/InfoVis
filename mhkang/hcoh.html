@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+
+            .node {
+                cursor: pointer;
+            }
+
+            .node:hover {
+                stroke: #000;
+                stroke-width: 1.5px;
+            }
+
+            .node--leaf {
+                fill: white;
+            }
+
+            .label {
+                font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+                text-anchor: middle;
+                text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+            }
+
+            .label,
+            .node--root,
+            .node--leaf {
+                pointer-events: none;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="category" width="480" height="480"></div>
+        <div id="bar" width="960" height="500"></div>
+        <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
+        <script src="js/d3.min.js"></script>
+        <script src="js/d3-scale-chromatic.v1.min.js"></script>
+        <script src="js/hcoh.js"></script>
+    </body>
+</html>
