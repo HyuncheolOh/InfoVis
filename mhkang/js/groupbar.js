@@ -5,6 +5,7 @@ function GroupBar() {
     function my(selection){
         selection.each(function(data){
             console.log(data);
+            console.log(width, height);
             var svg = d3.select("#bar").append("svg").attr("id", "svg_bar").attr("width", width).attr("height", height),
                 g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -115,6 +116,7 @@ function GroupBar() {
             }
         });
     };
+    
     my.width = function(value){
         if(!arguments.length) return width;
         width = value;

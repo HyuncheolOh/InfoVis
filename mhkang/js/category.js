@@ -1,6 +1,6 @@
 function Category() {
     var width, height;
-
+    
     function my(selection){
         selection.each(function(data){
             root = data['category'];
