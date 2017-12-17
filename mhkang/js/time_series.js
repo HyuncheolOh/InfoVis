@@ -113,46 +113,6 @@ function TimeSeries(){
               .attr("height", height)
               .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
               .call(zoom);
-          
-            
-
-          function update(){
-            x.domain(d3.extent(reviews, function(d) { return d.date; }));
-            y.domain([0, d3.max(reviews, function(d) { return d.star; })]);
-            x2.domain(x.domain());
-            y2.domain(y.domain());
-
-            var svg = d3.select("#time_series").transition();
-
-            focus.append("path")
-                .duration(750)
-                .attr("d", area);
-
-            focus.append("g")
-                .duration(750)
-                .call(xAxis);
-
-            focus.append("g")
-                .duration(750)
-                .call(yAxis);
-
-            context.append("path")
-                .duration(750)
-                .attr("d", area2);
-
-            context.append("g")
-                .duration(750)
-                .call(xAxis2);
-
-            context.append("g")
-                .duration(750)
-                .call(brush)
-                .call(brush.move, x.range());
-
-            svg.append("rect")
-                .duration(750)
-                .call(zoom);
-            }
 
 
           function brushed() {

@@ -22,10 +22,6 @@
   fill: steelblue;
 }
 
-.bar:hover {
-  fill: lightblue;
-}
-
 .axis text {
   font: 10px sans-serif;
 }
@@ -52,4 +48,16 @@
   pointer-events: none;
   opacity: 0.9;
   visibility: hidden;
+}
+
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 3;
+}
+
+/* Style the dots by assigning a fill and stroke */
+.dot {
+    fill: steelblue;
+    stroke: #fff;
 }
