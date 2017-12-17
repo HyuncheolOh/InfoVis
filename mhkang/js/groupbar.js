@@ -50,15 +50,15 @@ function GroupBar() {
                 })
                 .selectAll("rect")
                 .data(function(d) { return keys.map(function(key) {
-                    return {key: key, value: d[key], "latitude":d.latitude, "longitude":d.longitude, "star":d.star, "name":d.business}; });
+                    return {id: d.id, key: key, value: d[key], "latitude":d.latitude, "longitude":d.longitude, "star":d.star, "name":d.business}; });
                 })
                 .enter().append("rect")
                 .attr("x", function(d) { return x1(d.key); })
                 .attr("y", function(d) {
                     return height; })
-                .attr("width", x1.bandwidth())
-                .on('mouseover', tool_tip.show)
-                .on('mouseout', tool_tip.hide)
+                .attr("width", x1.bandwidth())          
+                .on("mouseover", handleMouseOver)
+                .on("mouseout", handleMouseOut)
                 .on("click", function(d) {
                     onCkick(d);
                 })
@@ -118,6 +118,27 @@ function GroupBar() {
                 console.log("onClick " + d.star);
                 console.log("onClick " + d.name);
             }
+
+            function handleMouseOver(d, i) {  // Add interactivity
+                // Use D3 to select element, change color and size
+                d3.select(this)
+                    .attr("opacity", "0.5");
+
+                var dot = d3.select("#"+d.id).attr("opacity", "0.8").attr("r", "10");
+
+                tool_tip.show(d);
+            }
+
+            function handleMouseOut(d, i) {
+
+                d3.select(this)
+                    .attr("opacity", "1");
+
+                var dot = d3.select("#"+d.id).attr("opacity", "1").attr("r", "5");
+
+                tool_tip.hide(d);
+            }
+          
         });
     };
     

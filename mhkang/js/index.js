@@ -101,6 +101,8 @@ function onUserSelect(key, data) {
 
 function updateUI(my_data, user_data) {
     console.log("updateUI");
+    console.log(my_data);
+    console.log(user_data);
     var my_reviews = my_data['reviews'];
     var my_name = my_data['user_name'];
     var user_reviews = user_data['reviews'];
@@ -114,7 +116,7 @@ function updateUI(my_data, user_data) {
                 b["business"] = my_reviews[i]['name'];
                 b[my_name] = my_reviews[i]['review_star'];
                 b[user_name] = user_reviews[j]['review_star'];
-                b["id"] = my_reviews[i]['business_id'];
+                b["id"] = "_" + my_reviews[i]['business_id'];
                 b["latitude"] = my_reviews[i]['latitude'];
                 b["longitude"] = my_reviews[i]['longitude'];
                 b["star"] = my_reviews[i]['star'];
@@ -127,24 +129,7 @@ function updateUI(my_data, user_data) {
         }
     }
 
-    var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
-
-    var user_reviews = user_data['reviews'];
-
-    var reviews = [];
-    var star_distribution = [{star:0, cnt:0},{star:1, cnt:0},{star:2, cnt:0},{star:3, cnt:0},{star:4, cnt:0},{star:5, cnt:0},];
-    for (var i = 0; i < user_reviews.length; i++) {
-        var review_star = +(user_reviews[i].review_star)
-        reviews.push({date: parseDate(user_reviews[i].date), star: review_star });
-        star_distribution[review_star].cnt++;
-    }
-
-    console.log(star_distribution);
-
-    reviews.sort(function(a, b) {
-        return a.date.getTime() - b.date.getTime();
-    });
-
+    console.log(n_user_reviews);
     var bar_svg = d3.select("#bar");
     var groupBar = GroupBar()
         .my_name(my_name)
@@ -164,39 +149,7 @@ function updateUI(my_data, user_data) {
         .datum(user_data)
         .call(category);
 
-    //var time_series_distribution_svg = d3.select("#time_series_distribution");
     updateTS_D(my_data, user_data);
-/*
-    console.log(time_series_flag);
-
-    if (time_series_flag == true){
-    var ts_d_svg = d3.select("#ts_d");
-
-    var timeSeries = TimeSeries()
-        .my_name(my_name)
-        .user_name(user_name)
-        .width(550)
-        .height(300);
-
-    ts_d_svg
-        .datum(reviews)
-        .call(timeSeries);
-    
-    }
-    else{
-        var ts_d_svg = d3.select("#ts_d");
-
-        var distribution = Distribution()
-            .my_name(my_name)
-            .user_name(user_name)
-            .width(550)
-            .height(300);
-
-        ts_d_svg
-            .datum(star_distribution)
-            .call(distribution);
-    }
-    */
     
 }
 
@@ -214,11 +167,9 @@ function updateTS_D(my_data, user_data){
     var star_distribution = [{star:0, cnt:0},{star:1, cnt:0},{star:2, cnt:0},{star:3, cnt:0},{star:4, cnt:0},{star:5, cnt:0},];
     for (var i = 0; i < user_reviews.length; i++) {
         var review_star = +(user_reviews[i].review_star)
-        reviews.push({date: parseDate(user_reviews[i].date), star: review_star });
+        reviews.push({date: parseDate(user_reviews[i].date), star: review_star, id: "_" + user_reviews[i].business_id });
         star_distribution[review_star].cnt++;
     }
-
-    console.log(star_distribution);
 
     reviews.sort(function(a, b) {
         return a.date.getTime() - b.date.getTime();

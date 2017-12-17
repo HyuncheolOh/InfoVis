@@ -5,8 +5,6 @@ function TimeSeries(){
   function my(selection){
         selection.each(function(data){
           console.log(w, h);
-          console.log(data);
-          console.log(w, h);
 
           //var svg = d3.select("#svg_time_series");
 
@@ -82,7 +80,8 @@ function TimeSeries(){
               .data(data)
             .enter().append("circle") // Uses the enter().append() method
               .attr("class", "dot") // Assign a class for styling
-              .attr("cx", function(d, i) { return x(d.date) })
+              .attr("id", function(d) { console.log(d); return d.id })
+              .attr("cx", function(d) { return x(d.date) })
               .attr("cy", function(d) { return y(d.star) })
               .attr("r", 5);
 
@@ -112,7 +111,7 @@ function TimeSeries(){
               .data(data)
             .enter().append("circle") // Uses the enter().append() method
               .attr("class", "dot") // Assign a class for styling
-              .attr("cx", function(d, i) { return x2(d.date) })
+              .attr("cx", function(d) { return x2(d.date) })
               .attr("cy", function(d) { return y2(d.star) })
               .attr("r", 5);
 
