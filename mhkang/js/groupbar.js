@@ -42,23 +42,34 @@ function GroupBar() {
             g.append("g")
                 .selectAll("g")
                 .data(data)
-                .enter().append("g")
-                .attr("transform", function(d) { return "translate(" + x0(d.business) + ",0)"; })
+                .enter()
+                .append("g")
+                .attr("transform", function(d) {
+                    return "translate(" + x0(d.business) + ",0)";
+                })
                 .selectAll("rect")
                 .data(function(d) { return keys.map(function(key) {
                     return {key: key, value: d[key], "latitude":d.latitude, "longitude":d.longitude, "star":d.star, "name":d.business}; });
                 })
                 .enter().append("rect")
                 .attr("x", function(d) { return x1(d.key); })
-                .attr("y", function(d) { return y(d.value); })
+                .attr("y", function(d) {
+                    return height; })
                 .attr("width", x1.bandwidth())
-                .attr("height", function(d) { return height - y(d.value); })
-                .attr("fill", function(d) { return z(d.key); })
                 .on('mouseover', tool_tip.show)
                 .on('mouseout', tool_tip.hide)
                 .on("click", function(d) {
-                   onCkick(d);
-                });
+                    onCkick(d);
+                })
+                .transition().duration(100)
+                .attr("y", function(d) {
+                    return y(d.value);
+                })
+                .attr("height", function(d) {
+                    console.log(height - y(d.value));
+                    return height - y(d.value); })
+                .attr("fill", function(d) { return z(d.key); })
+
 
             var xAxis = d3.axisBottom(x0).tickFormat("");
             g.append("g")
@@ -106,13 +117,6 @@ function GroupBar() {
                 console.log("onClick " + d.longitude);
                 console.log("onClick " + d.star);
                 console.log("onClick " + d.name);
-
-                var tool_tip = d3.tip()
-                    .attr("class", "d3-tip")
-                    .offset([-8, 0])
-                    .html(function(d) { return "TEST TIP"; });
-                g.call(tool_tip);
-
             }
         });
     };
