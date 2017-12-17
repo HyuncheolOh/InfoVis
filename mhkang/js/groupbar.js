@@ -2,6 +2,7 @@ function GroupBar() {
     var width, height;
     var my_name, user_name;
     var margin = {top: 20, right: 70, bottom: 30, left: 40};
+    
     function my(selection){
         selection.each(function(data){
             console.log(data);

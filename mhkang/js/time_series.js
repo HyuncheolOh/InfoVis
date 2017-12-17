@@ -1,22 +1,23 @@
 function TimeSeries(){
-  var width, height;
+  var w, h;
   var my_name, user_name;
-  var margin1 = {top: 20, right: 20, bottom: 100, left: 40},
-      margin2 = {top: 170, right: 20, bottom: 30, left: 40};
+  var mg = {top: 20, right: 20, bottom: 100, left: 40};
   
   function my(selection){
         selection.each(function(data){
           console.log(data);
+          console.log(w, h);
 
-          var w = 550, h = 250
-          var svg = d3.select("#time_series").append("svg").attr("id", "svg_time_series").attr("width", w).attr("height", h),
-              margin = {top: 20, right: 20, bottom: 110, left: 40},
-              margin2 = {top: 170, right: 20, bottom: 30, left: 40},
+          var svg = d3.select("#svg_time_series");
+
+         //var svg = d3.select("#time_series").append("svg").attr("id", "svg_time_series").attr("width", w).attr("height", h);
+              //g = svg.append("g").attr("transform", "translate(" + mg.left + "," + mg.top + ")");
+
+          var margin = {top: 20, right: 20, bottom: 100, left: 40},
+              margin2 = {top: 200, right: 20, bottom: 30, left: 40},
               width = +svg.attr("width") - margin.left - margin.right,
               height = +svg.attr("height") - margin.top - margin.bottom,
               height2 = +svg.attr("height") - margin2.top - margin2.bottom;
-
-          var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
 
           var x = d3.scaleTime().range([0, width]),
               x2 = d3.scaleTime().range([0, width]),
@@ -38,20 +39,21 @@ function TimeSeries(){
               .on("zoom", zoomed);
 
           var area = d3.area()
-              .curve(d3.curveMonotoneX)
+              //.curve(d3.curveMonotoneX)
               .x(function(d) { return x(d.date); })
               .y0(height)
               .y1(function(d) { return y(d.star); });
 
           var area2 = d3.area()
-              .curve(d3.curveMonotoneX)
+              //.curve(d3.curveMonotoneX)
               .x(function(d) { return x2(d.date); })
               .y0(height2)
               .y1(function(d) { return y2(d.star); });
 
+
           svg.append("defs").append("clipPath")
               .attr("id", "clip")
-              .append("rect")
+            .append("rect")
               .attr("width", width)
               .attr("height", height);
 
@@ -62,6 +64,8 @@ function TimeSeries(){
           var context = svg.append("g")
               .attr("class", "context")
               .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
+          
+          var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
 
           var user_reviews = data['reviews'];
 
@@ -70,7 +74,7 @@ function TimeSeries(){
           for (var i = 0; i < user_reviews.length; i++) {
             reviews.push({date: parseDate(user_reviews[i].date), star: +(user_reviews[i].review_star) });
           }
-          
+
           reviews.sort(function(a, b) {
             return a.date.getTime() - b.date.getTime();
           });
@@ -117,6 +121,47 @@ function TimeSeries(){
               .attr("height", height)
               .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
               .call(zoom);
+          
+            
+
+          function update(){
+            x.domain(d3.extent(reviews, function(d) { return d.date; }));
+            y.domain([0, d3.max(reviews, function(d) { return d.star; })]);
+            x2.domain(x.domain());
+            y2.domain(y.domain());
+
+            var svg = d3.select("#time_series").transition();
+
+            focus.append("path")
+                .duration(750)
+                .attr("d", area);
+
+            focus.append("g")
+                .duration(750)
+                .call(xAxis);
+
+            focus.append("g")
+                .duration(750)
+                .call(yAxis);
+
+            context.append("path")
+                .duration(750)
+                .attr("d", area2);
+
+            context.append("g")
+                .duration(750)
+                .call(xAxis2);
+
+            context.append("g")
+                .duration(750)
+                .call(brush)
+                .call(brush.move, x.range());
+
+            svg.append("rect")
+                .duration(750)
+                .call(zoom);
+            }
+
 
           function brushed() {
             if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return; // ignore brush-by-zoom
@@ -129,6 +174,7 @@ function TimeSeries(){
                 .translate(-s[0], 0));
           }
 
+
           function zoomed() {
             if (d3.event.sourceEvent && d3.event.sourceEvent.type === "brush") return; // ignore zoom-by-brush
             var t = d3.event.transform;
@@ -138,48 +184,30 @@ function TimeSeries(){
             context.select(".brush").call(brush.move, x.range().map(t.invertX, t));
           }
 
-        });
-  };
+  });
+}
 
   my.width = function(value){
-      if(!arguments.length) return width;
-      width = value;
+      if(!arguments.length) return w;
+      w = value;
       return my;
   }
 
   my.height = function(value){
-      if(!arguments.length) return height;
-      height = value;
+      if(!arguments.length) return h;
+      h = value;
       return my;
   }
 
   my.my_name = function(value) {
-      if(!arguments.length) return height;
+      if(!arguments.length) return my_name;
       my_name = value;
       return my;
   }
 
   my.user_name = function(value) {
-      if(!arguments.length) return height;
+      if(!arguments.length) return user_name;
       user_name = value;
-      return my;
-  }
-
-  my.margin1 = function(value) {
-      if(!arguments.length) return margin1;
-      margin1.left = value['left'];
-      margin1.top = value['right'];
-      margin1.top = value['top'];
-      margin1.bottom = value['bottom'];
-      return my;
-  }
-
-  my.margin2 = function(value) {
-      if(!arguments.length) return margin2;
-      margin2.left = value['left'];
-      margin2.top = value['right'];
-      margin2.top = value['top'];
-      margin2.bottom = value['bottom'];
       return my;
   }
 

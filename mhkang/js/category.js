@@ -7,7 +7,7 @@ function Category() {
             root = d3.hierarchy(root)
                 .sum(function(d) { return d.size; })
                 .sort(function(a, b) { return b.value - a.value; });
-
+            console.log(width, height);
             var svg = d3.select(this).append("svg")
                     .attr("id", "svg_category")
                     .attr("width", width)

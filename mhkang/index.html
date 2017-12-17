@@ -10,7 +10,7 @@
     <title>Yelp Review Analysis</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/offcanvas.css" rel="stylesheet">
@@ -40,11 +40,12 @@
 
           <div>
             <div class="row"> 
+              <div id="time_series"  >
+                <svg id="svg_time_series" width="550" height="250"></svg>
+                <!-- <svg id="svg_time_series" width="550" height="250"></svg> -->
+              </div>
               <div class="col-6 col-lg-4" id="category" >
                 <!-- category div -->
-              </div>
-              
-              <div class="col-6 col-lg-4" id="time_series">
               </div>
             </div>
 
@@ -55,12 +56,12 @@
           </div>
         </div><!--/span-->
 
-        <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+        <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar" >
           <div class="album text-muted">
             <div class=containter-fluid>
               <div class="row" style="margin:auto;">
                 <div class="card">
-                  <img src="thumbnail.png" alt="Card image cap" width="80">
+                  <img src="profile.png" alt="Card image cap" width="80">
                 </div>
                 <div style="text-align:center;margin: auto;">
                   <p>Name</p>
@@ -69,10 +70,10 @@
             </div>
           </div>
           <div style="padding-top:40px;padding-left: 10px;">
-            <p>Reviewers</p>
+            <p>Users</p>
           </div>
 
-          <div id="u_list" class="pre-scrollable list-group">
+          <div id="u_list" class="pre-scrollable list-group" >
           </div>
         </div><!--/span-->
       </div><!--/row-->
@@ -89,14 +90,12 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="assets/js/vendor/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/offcanvas.js"></script>
     <script src="js/d3.min.js"></script>
     <script src="js/d3-scale-chromatic.v1.min.js"></script>
-    <script src="js/d3.v4.min.js"></script>
     <script src="js/time_series.js"></script>
     <script src="js/category.js"></script>
     <script src="js/groupbar.js"></script>
@@ -104,3 +103,6 @@
     <script src="js/d3-tip.js"></script>
   </body>
 </html>
+
+<!-- <script src="js/d3.v4.min.js"></script> -->
+

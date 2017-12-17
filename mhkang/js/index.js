@@ -92,7 +92,6 @@ function updateUI(my_data, user_data) {
     time_series_svg
         .datum(user_data)
         .call(timeSeries);
-
 }
 
 function sortProperties(obj)
