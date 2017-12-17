@@ -22,6 +22,54 @@ function add_div(key, obj, flag) {
     document.getElementById('u_list').appendChild(a);
 }
 
+function userFilter() {
+    var x = document.getElementById("slidebar").value;
+    console.log("filter : " + x);
+    var myNode = document.getElementById("u_list");
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+    }
+    var sim_user_index = -1;
+    for(var key in sortedUser) {
+        if (sortedUser[key][0] == my_id) //my data
+            continue;
+        var com_biz_num = sortedUser[key][1][['common_biz_num']];
+        if (x > com_biz_num) {
+            //add in the list
+            add_div(sortedUser[key][0], sortedUser[key][1]);
+            if (sim_user_index == -1) {
+                sim_user_index = key;
+            }
+        }
+    }
+    onUserSelect(sortedUser[sim_user_index][0], sortedUser[sim_user_index][1]);
+
+
+}
+
+function addRangeBar() {
+    var range_element = document.getElementById("slide_container");
+
+    var x = document.createElement("INPUT");
+    x.id = "slidebar";
+    x.setAttribute("class", "slider");
+    x.setAttribute("type", "range");
+    x.setAttribute("min", "5");
+    x.setAttribute("max", "30");
+    x.setAttribute("value", "30");
+    range_element.appendChild(x);
+
+    var y = document.createElement("BUTTON");
+    y.setAttribute("class", "button");
+    var span = document.createElement('span')
+    span.innerHTML = "Apply";
+    y.appendChild(span);
+    y.onclick = function () {
+        userFilter();
+    };
+    range_element.appendChild(y);
+}
+
 function onUserSelect(key, data) {
     //update UI
     console.log("onUserSelect");
@@ -129,11 +177,12 @@ var data = d3.json("./data/reviews.json", function(error, data) {
     sortedUser = sortProperties(data);
     var flag = true;
     for(var key in sortedUser) {
-        if (key == 0) //my data
+        if (sortedUser[key][0] == my_id) //my data
             continue;
         add_div(sortedUser[key][0], data[sortedUser[key][0]], flag);
         flag = false;
     }
+    addRangeBar();
 
     user_id = sortedUser[1][0];
     my_data = data[my_id];

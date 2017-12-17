@@ -65,7 +65,6 @@ function GroupBar() {
                     return y(d.value);
                 })
                 .attr("height", function(d) {
-                    console.log(height - y(d.value));
                     return height - y(d.value); })
                 .attr("fill", function(d) { return z(d.key); })
 
