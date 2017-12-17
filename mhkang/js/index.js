@@ -23,8 +23,10 @@ function add_div(key, obj, flag) {
     a.innerHTML = obj['user_name'];
     a.id = key;
     a.classList.add('list-group-item');
-    if(flag)
+    if(flag){
         a.classList.add('active');
+        a.style.color = "white";
+    }
 
     a.onclick = function() {
         onUserSelect(key, obj);
@@ -93,10 +95,15 @@ function onUserSelect(key, data) {
 
     var children = document.getElementById('u_list').children;
     for (var i = 0; i < children.length; i++){
-        if ( children[i].classList.contains('active') )
+        if ( children[i].classList.contains('active') ){
             children[i].classList.remove('active');
+            children[i].style.color = "black";
+        }
     }
-    document.getElementById(key).classList.add('active');
+    var cur = document.getElementById(key);
+    cur.classList.add('active');
+    cur.style.color = "white";
+
 }
 
 function updateUI(my_data, user_data) {
@@ -164,7 +171,8 @@ function updateTS_D(my_data, user_data){
     var user_reviews = user_data['reviews'];
 
     var reviews = [];
-    var star_distribution = [{star:0, cnt:0},{star:1, cnt:0},{star:2, cnt:0},{star:3, cnt:0},{star:4, cnt:0},{star:5, cnt:0},];
+    var star_distribution = [{star:0, cnt:0},{star:1, cnt:0},{star:2, cnt:0},{star:3, cnt:0},{star:4, cnt:0},{star:5, cnt:0}];
+    
     for (var i = 0; i < user_reviews.length; i++) {
         var review_star = +(user_reviews[i].review_star)
         reviews.push({date: parseDate(user_reviews[i].date), star: review_star, id: "_" + user_reviews[i].business_id });
