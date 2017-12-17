@@ -10,12 +10,6 @@ function add_div(key, obj, flag) {
         a.classList.add('active');
 
     a.onclick = function() {
-        var children = document.getElementById('u_list').children;
-        for (var i = 0; i < children.length; i++){
-            if ( children[i].classList.contains('active') )
-                children[i].classList.remove('active');
-        }
-        a.classList.add('active');
         onUserSelect(key, obj);
     };
 
@@ -43,8 +37,6 @@ function userFilter() {
         }
     }
     onUserSelect(sortedUser[sim_user_index][0], sortedUser[sim_user_index][1]);
-
-
 }
 
 function addRangeBar() {
@@ -81,6 +73,13 @@ function onUserSelect(key, data) {
     var time_series_element = document.getElementById("svg_time_series");
     time_series_element.parentNode.removeChild(time_series_element);
     updateUI(my_data, data);
+
+    var children = document.getElementById('u_list').children;
+    for (var i = 0; i < children.length; i++){
+        if ( children[i].classList.contains('active') )
+            children[i].classList.remove('active');
+    }
+    document.getElementById(key).classList.add('active');
 }
 
 function updateUI(my_data, user_data) {
