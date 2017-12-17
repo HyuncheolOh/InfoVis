@@ -80,7 +80,7 @@ function TimeSeries(){
               .data(data)
             .enter().append("circle") // Uses the enter().append() method
               .attr("class", "dot") // Assign a class for styling
-              .attr("id", function(d) { console.log(d); return d.id })
+              .attr("id", function(d) { return d.id })
               .attr("cx", function(d) { return x(d.date) })
               .attr("cy", function(d) { return y(d.star) })
               .attr("r", 5);
