@@ -1,5 +1,22 @@
 var my_id = 'PKEzKWv_FktMm2mGPjwd0Q';
 var my_data;
+var u_data;
+
+var time_series_flag = true;
+
+document.getElementById('btn-time-series').onclick = function(){
+    time_series_flag = true;
+    var ts_d_element = document.getElementById("svg_ts_d");
+    ts_d_element.parentNode.removeChild(ts_d_element);  
+    updateTS_D(my_data, user_data);
+};
+
+document.getElementById('btn-distribution').onclick = function(){
+    time_series_flag = false;
+    var ts_d_element = document.getElementById("svg_ts_d");
+    ts_d_element.parentNode.removeChild(ts_d_element);
+    updateTS_D(my_data, u_data);
+};
 
 function add_div(key, obj, flag) {
     var a = document.createElement('a');
@@ -70,8 +87,8 @@ function onUserSelect(key, data) {
     bar_element.parentNode.removeChild(bar_element);
     var category_element = document.getElementById("svg_category");
     category_element.parentNode.removeChild(category_element);
-    var time_series_element = document.getElementById("svg_time_series");
-    time_series_element.parentNode.removeChild(time_series_element);
+    var ts_d_element = document.getElementById("svg_ts_d");
+    ts_d_element.parentNode.removeChild(ts_d_element);
     updateUI(my_data, data);
 
     var children = document.getElementById('u_list').children;
@@ -88,7 +105,7 @@ function updateUI(my_data, user_data) {
     var my_name = my_data['user_name'];
     var user_reviews = user_data['reviews'];
     var user_name = user_data['user_name'];
-
+    u_data = user_data;
     n_user_reviews = [];
     for (var i =0; i < my_reviews.length; i++) {
         for (var j = 0; j < user_reviews.length; j++) {
@@ -115,10 +132,14 @@ function updateUI(my_data, user_data) {
     var user_reviews = user_data['reviews'];
 
     var reviews = [];
-
+    var star_distribution = [{star:0, cnt:0},{star:1, cnt:0},{star:2, cnt:0},{star:3, cnt:0},{star:4, cnt:0},{star:5, cnt:0},];
     for (var i = 0; i < user_reviews.length; i++) {
-        reviews.push({date: parseDate(user_reviews[i].date), star: +(user_reviews[i].review_star) });
+        var review_star = +(user_reviews[i].review_star)
+        reviews.push({date: parseDate(user_reviews[i].date), star: review_star });
+        star_distribution[review_star].cnt++;
     }
+
+    console.log(star_distribution);
 
     reviews.sort(function(a, b) {
         return a.date.getTime() - b.date.getTime();
@@ -143,16 +164,93 @@ function updateUI(my_data, user_data) {
         .datum(user_data)
         .call(category);
 
-    var time_series_svg = d3.select("#time_series");
+    //var time_series_distribution_svg = d3.select("#time_series_distribution");
+    updateTS_D(my_data, user_data);
+/*
+    console.log(time_series_flag);
+
+    if (time_series_flag == true){
+    var ts_d_svg = d3.select("#ts_d");
+
     var timeSeries = TimeSeries()
         .my_name(my_name)
         .user_name(user_name)
         .width(550)
-        .height(250);
+        .height(300);
 
-    time_series_svg
+    ts_d_svg
         .datum(reviews)
         .call(timeSeries);
+    
+    }
+    else{
+        var ts_d_svg = d3.select("#ts_d");
+
+        var distribution = Distribution()
+            .my_name(my_name)
+            .user_name(user_name)
+            .width(550)
+            .height(300);
+
+        ts_d_svg
+            .datum(star_distribution)
+            .call(distribution);
+    }
+    */
+    
+}
+
+function updateTS_D(my_data, user_data){
+
+    var my_name = my_data['user_name'];
+    var user_reviews = user_data['reviews'];
+    var user_name = user_data['user_name'];
+
+    var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
+
+    var user_reviews = user_data['reviews'];
+
+    var reviews = [];
+    var star_distribution = [{star:0, cnt:0},{star:1, cnt:0},{star:2, cnt:0},{star:3, cnt:0},{star:4, cnt:0},{star:5, cnt:0},];
+    for (var i = 0; i < user_reviews.length; i++) {
+        var review_star = +(user_reviews[i].review_star)
+        reviews.push({date: parseDate(user_reviews[i].date), star: review_star });
+        star_distribution[review_star].cnt++;
+    }
+
+    console.log(star_distribution);
+
+    reviews.sort(function(a, b) {
+        return a.date.getTime() - b.date.getTime();
+    });
+
+    if (time_series_flag == true){
+    var ts_d_svg = d3.select("#ts_d");
+
+    var timeSeries = TimeSeries()
+        .my_name(my_name)
+        .user_name(user_name)
+        .width(550)
+        .height(300);
+
+    ts_d_svg
+        .datum(reviews)
+        .call(timeSeries);
+    
+    }
+    else{
+        var ts_d_svg = d3.select("#ts_d");
+
+        var distribution = Distribution()
+            .my_name(my_name)
+            .user_name(user_name)
+            .width(550)
+            .height(300);
+
+        ts_d_svg
+            .datum(star_distribution)
+            .call(distribution);
+    }   
 }
 
 function sortProperties(obj)

@@ -10,11 +10,15 @@ function TimeSeries(){
 
           //var svg = d3.select("#svg_time_series");
 
-          var svg = d3.select("#time_series").append("svg").attr("id", "svg_time_series").attr("width", w).attr("height", h);
+          var svg = d3.select("#ts_d")
+                      .append("svg")
+                      .attr("id", "svg_ts_d")
+                      .attr("width", w)
+                      .attr("height", h);
               //g = svg.append("g").attr("transform", "translate(" + mg.left + "," + mg.top + ")");
 
-          var margin = {top: 20, right: 20, bottom: 100, left: 40},
-              margin2 = {top: 200, right: 20, bottom: 30, left: 40},
+          var margin = {top: 20, right: 20, bottom: 110, left: 40},
+              margin2 = {top: 230, right: 20, bottom: 30, left: 40},
               width = +svg.attr("width") - margin.left - margin.right,
               height = +svg.attr("height") - margin.top - margin.bottom,
               height2 = +svg.attr("height") - margin2.top - margin2.bottom;

@@ -39,13 +39,15 @@
             <button type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas">Toggle nav</button>
           </p>
           <h1>Reviewer's Information</h1>
-
           <div>
+            <div class="btn-group" style="width: 120px; height: 30px">
+              <button id="btn-time-series" type="button" class="btn btn-primary" style="font-size: 70%;">Time-series</button>
+              <button id="btn-distribution" type="button" class="btn btn-primary" style="font-size: 70%;">Distribution</button>
+            </div>
             <div class="row"> 
-              <div id="time_series" >
+              <div id="ts_d" >
 
-                <!-- <svg id="svg_time_series" width="550" height="250"></svg> -->
-              </div>
+              </div>              
               <div class="col-6 col-lg-4" id="category" >
                 <!-- category div -->
               </div>
@@ -53,6 +55,9 @@
 
             <div id="bar">
               <!-- bar div -->
+            </div>
+            <div id="distribution" >
+
             </div>
             <div id="user_list"></div>
           </div>
@@ -103,6 +108,7 @@
     <script src="js/d3.min.js"></script>
     <script src="js/d3-scale-chromatic.v1.min.js"></script>
     <script src="js/time_series.js"></script>
+    <script src="js/distribution.js"></script>
     <script src="js/category.js"></script>
     <script src="js/groupbar.js"></script>
     <script src="js/index.js"></script>
