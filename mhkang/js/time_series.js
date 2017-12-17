@@ -8,9 +8,9 @@ function TimeSeries(){
           console.log(data);
           console.log(w, h);
 
-          var svg = d3.select("#svg_time_series");
+          //var svg = d3.select("#svg_time_series");
 
-         //var svg = d3.select("#time_series").append("svg").attr("id", "svg_time_series").attr("width", w).attr("height", h);
+          var svg = d3.select("#time_series").append("svg").attr("id", "svg_time_series").attr("width", w).attr("height", h);
               //g = svg.append("g").attr("transform", "translate(" + mg.left + "," + mg.top + ")");
 
           var margin = {top: 20, right: 20, bottom: 100, left: 40},
@@ -61,35 +61,23 @@ function TimeSeries(){
               .attr("class", "focus")
               .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+              console.log(focus);
+
           var context = svg.append("g")
               .attr("class", "context")
               .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
-          
-          var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
 
-          var user_reviews = data['reviews'];
-
-          var reviews = [];
-
-          for (var i = 0; i < user_reviews.length; i++) {
-            reviews.push({date: parseDate(user_reviews[i].date), star: +(user_reviews[i].review_star) });
-          }
-
-          reviews.sort(function(a, b) {
-            return a.date.getTime() - b.date.getTime();
-          });
-
-          console.log(reviews);
-
-          x.domain(d3.extent(reviews, function(d) { return d.date; }));
-          y.domain([0, d3.max(reviews, function(d) { return d.star; })]);
+          x.domain(d3.extent(data, function(d) { return d.date; }));
+          y.domain([0, d3.max(data, function(d) { return d.star; })]);
           x2.domain(x.domain());
           y2.domain(y.domain());
 
           focus.append("path")
-              .datum(reviews)
+              .datum(data)
               .attr("class", "area")
               .attr("d", area);
+
+              console.log(focus);
 
           focus.append("g")
               .attr("class", "axis axis--x")
@@ -101,7 +89,7 @@ function TimeSeries(){
               .call(yAxis);
 
           context.append("path")
-              .datum(reviews)
+              .datum(data)
               .attr("class", "area")
               .attr("d", area2);
 

@@ -63,6 +63,20 @@ function updateUI(my_data, user_data) {
         }
     }
 
+    var parseDate = d3.timeParse("%Y-%m-%d %H:%M:%S");
+
+    var user_reviews = user_data['reviews'];
+
+    var reviews = [];
+
+    for (var i = 0; i < user_reviews.length; i++) {
+        reviews.push({date: parseDate(user_reviews[i].date), star: +(user_reviews[i].review_star) });
+    }
+
+    reviews.sort(function(a, b) {
+        return a.date.getTime() - b.date.getTime();
+    });
+
     var bar_svg = d3.select("#bar");
     var groupBar = GroupBar()
         .my_name(my_name)
@@ -90,7 +104,7 @@ function updateUI(my_data, user_data) {
         .height(250);
 
     time_series_svg
-        .datum(user_data)
+        .datum(reviews)
         .call(timeSeries);
 }
 
