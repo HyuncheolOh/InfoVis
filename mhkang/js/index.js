@@ -68,6 +68,12 @@ function addRangeBar() {
     x.setAttribute("min", "5");
     x.setAttribute("max", "30");
     x.setAttribute("value", "30");
+    x.onchange  = function () {
+        var slide_value = document.getElementById("slide_value");
+        slide_value.innerHTML = "Filter by common business ("+document.getElementById("slidebar").value +")";
+    };
+
+
     range_element.appendChild(x);
 
     var y = document.createElement("BUTTON");
